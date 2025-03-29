@@ -90,7 +90,7 @@ Hello Suwan, my name is {self.nama}, how can i help you??
                     try:
                         #Data email
                         email_pengirim = input('Masukkan email pengirim : ')
-                        password_pengirim = input('Masukkan password email pengirim : ')
+                        password_pengirim = 'gywf msdd tska jvbk'   # buat app password untuk email pengirim
                         email_penerima = input('Masukkan email penerima : ')
                         subject = input('Masukkan subject email : ')
                         body = input('Masukkan isi email : ')
@@ -99,8 +99,7 @@ Hello Suwan, my name is {self.nama}, how can i help you??
                         email = f'Subject : {subject}\n \n{body}'
                         
                         #koneksi ke server SMTP
-                        with smtp.SMTP('smtp.gmail.com', 587, timeout=60) as server:    #server SMTP gmail
-                            server.starttls()    #enkripsi koneksi
+                        with smtp.SMTP_SSL('smtp.gmail.com', 465, timeout=60) as server:    #server SMTP gmail  #gunakan port SSL dengan port 465
                             server.login(email_pengirim, password_pengirim)     #login ke email pengirim\
                             server.sendmail(email_pengirim, email_penerima, email)    #kirim email
                             server.close()
@@ -113,7 +112,37 @@ Hello Suwan, my name is {self.nama}, how can i help you??
                     except smtp.SMTPException as e:
                         print(f"Terjadi kesalahan saat mengirim email: {e}")
                     except Exception as e:
-                        print(f"Kesalahan tidak terduga: {e}")
+                        print(f'Error: {e}')
+                    
+                    
+                    #  gywf msdd tska jvbk
+                    
+                    '''
+                    try:
+                        email_pengirim = input('Masukkan email pengirim : ')
+                        password_pengirim = 'gywf msdd tska jvbk'
+                        email_penerima = input('Masukkan email penerima : ')
+                        email_subject = input('Masukkan subject : ')
+                        email_body = input('Masukkan body : ')
+
+                        email = f'Subject : {email_subject}\n\n{email_body}'
+                        with smtp.SMTP_SSL('smtp.gmail.com', 465, timeout=60) as server:
+                            server.login(email_pengirim, password_pengirim)
+                            server.sendmail(email_pengirim, email_penerima, email)
+                            server.close()
+                            print('Email berhasil dikirim')
+                    except smtp.SMTPAuthenticationError:
+                        print('Email atau password salah')
+                    except smtp.SMTPConnectError:
+                        print('Gagal terhubung ke server SMTP')
+                    except smtp.SMTPException as e:
+                        print(f'Gagal mengirim email: {e}')
+                    except Exception as e:
+                        print(f'Error: {e}')
+                    
+                    
+                    
+                    '''
                 else:
                     print('Kamu memasukkan inputan yang salah !')
                     is_running = False

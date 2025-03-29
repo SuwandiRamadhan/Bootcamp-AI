@@ -88,9 +88,32 @@ Hello Suwan, my name is {self.nama}, how can i help you??
                         print('Terjadi kesalahan', e.__class__)
                 elif pilihan_fitur == '5':
                     try:
-                        pass
+                        #Data email
+                        email_pengirim = input('Masukkan email pengirim : ')
+                        password_pengirim = input('Masukkan password email pengirim : ')
+                        email_penerima = input('Masukkan email penerima : ')
+                        subject = input('Masukkan subject email : ')
+                        body = input('Masukkan isi email : ')
+                        
+                        #Format email
+                        email = f'Subject : {subject}\n \n{body}'
+                        
+                        #koneksi ke server SMTP
+                        with smtp.SMTP('smtp.gmail.com', 587, timeout=60) as server:    #server SMTP gmail
+                            server.starttls()    #enkripsi koneksi
+                            server.login(email_pengirim, password_pengirim)     #login ke email pengirim\
+                            server.sendmail(email_pengirim, email_penerima, email)    #kirim email
+                            server.close()
+                            print('Email berhasil dikirim!')
+                            
+                    except smtp.SMTPAuthenticationError:
+                        print("Gagal login! Periksa email dan password Anda.")
+                    except smtp.SMTPConnectError:
+                        print("Gagal terhubung ke server SMTP. Periksa koneksi internet Anda.")
+                    except smtp.SMTPException as e:
+                        print(f"Terjadi kesalahan saat mengirim email: {e}")
                     except Exception as e:
-                        print('Terjadi kesalahan', e.__class__)
+                        print(f"Kesalahan tidak terduga: {e}")
                 else:
                     print('Kamu memasukkan inputan yang salah !')
                     is_running = False

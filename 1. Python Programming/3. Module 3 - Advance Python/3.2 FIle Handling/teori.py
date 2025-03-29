@@ -16,7 +16,7 @@ print(file.write('ini adalah data yang ditambahkan'))
 file.close() # Close ini tujuaanya agar file tidak terus terbuka dan menghapus memorya yang digunakan
 
 # Write
-file = opem(.'teori.txt', 'w')
+file = open(.'teori.txt', 'w')
 print(file.write('ini adalah data yang ditulis'))
 file.close()
 

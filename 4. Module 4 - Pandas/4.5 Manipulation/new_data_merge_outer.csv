@@ -1,0 +1,6 @@
+ID,Nama,Jenis,Duration,Date,Pulse,Maxpulse,Calories,Level,Year
+1,,,120.0,2020/12/02,110.0,135.0,400.0,Low,2020.0
+2,,,110.0,2020/12/03,115.0,111.0,420.5,Low,2020.0
+3,Snowy,Campuran,130.0,"2020,12/04",125.0,90.0,410.2,High,2020.0
+4,Cloudy,Himalaya,,,,,,,
+5,Nuna,Kampung,,,,,,,

@@ -1,2 +1,0 @@
-
-Ini adalah data yang ditulis menggunakan metode write
